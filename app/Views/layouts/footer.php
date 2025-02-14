@@ -1,5 +1,5 @@
 <footer>
-    <p>&copy; 2024 Photo Management. Tous droits réservés.</p>
+    <p>&copy; 2025 Photo Management. Tous droits réservés.</p>
 </footer>
 </body>
 </html>

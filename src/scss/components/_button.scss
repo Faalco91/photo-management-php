@@ -1,0 +1,33 @@
+@use '../partials/variables' as *;
+@use '../partials/functions' as *;  
+@use '../partials/globals' as *;    
+
+.btn {
+    color: $text-color;
+    text-decoration: none;
+    padding: rem(12) rem(20);
+    margin-left: rem(10);
+    border-radius: rem(10);
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: transparentize-color($primary-color, 0.5); // Utilisation de la fonction pour ajouter de la transparence
+    }
+}
+
+.register-btn {
+    background-color: black;
+    color: white;
+}
+
+.login-btn {
+    background-color: white;
+    color: black;
+}
+
+.cta-btn {
+    font-size: rem(18);
+    background-color: black;
+    color: white;
+}
+

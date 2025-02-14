@@ -1,6 +1,10 @@
-$primary-color: #ecedee;
+$text-color: #000;
+$secondary-text-color: rgb(89, 89, 89);
+$hover-text-color: #fff;
 $background-color: #000;
+$primary-color: --background-color;
 $primary-font: 'Arial', sans-serif;
+$hover-color: #000;
 
 
 $breakpoints: (

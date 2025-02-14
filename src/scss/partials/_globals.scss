@@ -1,23 +1,36 @@
 :root {
 	--white: #fff;
+	--grey: #f0f0f0;
 	--black: #000;
-	--grey: #a1a1aa;
+	--bg-color: var(--black);
+	--text-color: var(--white);
+	--red : red;
+	--green: green;
+	--blue: blue;
+}
 
-	--bg-color: var(--white);
-	--text-color: var(--black);
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-	background-color: var(--bg-color);
-	color: var(--text-color);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--white);
+	color: var(--black);
 	&.dark {
 		--bg-color: var(--black);
 		--text-color: var(--white);
 	}
+	Font-family: -apple-system, BlinkMacSystemFont, SF Pro, Helvetica Neue, Arial, sans-serif;
 }
 
 a {
     text-decoration: none;
+	cursor: pointer;
 }
 
 li {
@@ -38,4 +51,28 @@ svg {
 			fill: var(--main-color);
 		}
 	}
+}
+
+.presentation {
+	height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+		h1 {
+			font-size: 4rem;
+			font-weight: 700;
+			margin-bottom: 1rem;
+		}
+
+		.description {
+			width: 80%;
+			text-align: center;
+			margin-bottom: 3rem;
+
+			p {
+				line-height: 1.75rem;
+			}
+		}
 }

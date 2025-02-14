@@ -1,14 +1,27 @@
 :root {
   --white: #fff;
+  --grey: #f0f0f0;
   --black: #000;
-  --grey: #a1a1aa;
-  --bg-color: var(--white);
-  --text-color: var(--black);
+  --bg-color: var(--black);
+  --text-color: var(--white);
+  --red: red;
+  --green: green;
+  --blue: blue;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--white);
+  color: var(--black);
+  Font-family: -apple-system, BlinkMacSystemFont, SF Pro, Helvetica Neue, Arial, sans-serif;
 }
 body.dark {
   --bg-color: var(--black);
@@ -17,6 +30,7 @@ body.dark {
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 li {
@@ -33,6 +47,106 @@ svg path {
 }
 svg:hover path {
   fill: var(--main-color);
+}
+
+.presentation {
+  height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.presentation h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.presentation .description {
+  width: 80%;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.presentation .description p {
+  line-height: 1.75rem;
+}
+
+.navbar {
+  padding-top: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 90%;
+}
+.navbar .navbar-left, .navbar .navbar-right {
+  display: flex;
+  align-items: center;
+  width: 20%;
+}
+.navbar .navbar-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar ul li {
+  transition: transform 0.3s ease;
+}
+.navbar ul li a {
+  color: rgb(89, 89, 89);
+  font-weight: 200;
+  text-decoration: none;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+  border-radius: 1.5625rem;
+}
+.navbar ul li:hover {
+  transform: scale(1.05) translateY(-2px);
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  color: #000;
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  margin-left: 0.625rem;
+  border-radius: 0.625rem;
+  transition: background-color 0.3s;
+}
+.btn:hover {
+  background-color: transparentize-color(--background-color, 0.5);
+}
+
+.register-btn {
+  background-color: black;
+  color: white;
+}
+
+.login-btn {
+  background-color: white;
+  color: black;
+}
+
+.cta-btn {
+  font-size: 1.125rem;
+  background-color: black;
+  color: white;
 }
 
 /*# sourceMappingURL=main.css.map */

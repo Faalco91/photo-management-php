@@ -1,0 +1,58 @@
+@use '../partials/variables' as *;
+@use '../partials/functions' as *;  
+
+.navbar {
+    padding-top: rem(20);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 90%;
+
+    .navbar-left, .navbar-right {
+        display: flex;
+        align-items: center;
+        width: 20%;
+    }
+
+    .navbar-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        li {
+            a {
+                color: $secondary-text-color;
+                font-weight: 200;
+                text-decoration: none;
+
+                padding-top: rem(20);
+                padding-bottom: rem(20);
+                padding-left: rem(28);
+                padding-right: rem(28);
+
+                border-radius: rem(25);
+ 
+            }
+
+            transition: transform .3s ease;
+
+            &:hover {
+                transform: scale(1.05) translateY(-2px);
+            }
+        }
+    }
+}
+

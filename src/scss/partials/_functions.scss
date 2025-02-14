@@ -1,3 +1,5 @@
+@use 'globals' as *;
+
 @function rem($pxVal) {
 	@return calc($pxVal / 16) * 1rem;
 }
