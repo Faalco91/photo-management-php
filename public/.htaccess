@@ -1,0 +1,10 @@
+# public/.htaccess
+RewriteEngine On
+RewriteBase /
+
+# Si ce n'est pas un fichier
+RewriteCond %{REQUEST_FILENAME} !-f
+# Et si ce n'est pas un dossier
+RewriteCond %{REQUEST_FILENAME} !-d
+# Alors réécrire vers index.php
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
