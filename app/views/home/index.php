@@ -1,24 +1,23 @@
-<div class="container">
-    <h1>Bienvenue sur Photo Management</h1>
-    
-    <?php if(isset($_SESSION['user_id'])) : ?>
-        <div class="dashboard">
-            <div class="quick-actions">
-                <h2>Actions rapides</h2>
-                <div class="action-buttons">
-                    <a href="<?php echo BASE_URL; ?>/groups/create" class="btn">Cr�er un groupe</a>
-                    <a href="<?php echo BASE_URL; ?>/groups" class="btn">Mes groupes</a>
-                </div>
-            </div>
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
+
+<?php include __DIR__ . '/layouts/header.php'; ?>
+
+<main>
+    <section class="presentation">
+        <h1>Capturez l’Aventure, Partagez l’Instant.</h1>
+        <div class="description">
+            <p>Parcourez le monde avec vos amis et gardez chaque instant en mémoire avec RoadPic</p>
+            <p>Partagez vos plus belles photos de roadtrip, créez des albums collaboratifs et revivez vos souvenirs à tout moment</p>
         </div>
-    <?php else : ?>
-        <div class="welcome-section">
-            <h2>Partagez vos photos de voyage avec vos amis</h2>
-            <p>Cr�ez des groupes, partagez vos photos et gardez vos souvenirs de voyage organis�s.</p>
-            <div class="cta-buttons">
-                <a href="<?php echo BASE_URL; ?>/auth/register" class="btn btn-primary">S'inscrire</a>
-                <a href="<?php echo BASE_URL; ?>/auth/login" class="btn">Se connecter</a>
-            </div>
+        <div>
+            <a href="/#" class="btn cta-btn">Rejoindre l’aventure</a>
         </div>
-    <?php endif; ?>
-</div>
+    </section>
+
+
+</main>
+
+<?php include __DIR__ . '/layouts/footer.php'; ?>

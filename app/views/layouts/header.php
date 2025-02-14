@@ -3,74 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo isset($title) ? $title . ' - ' : ''; ?>Photo Management</title>
-    <style>
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            margin: 5px;
-        }
-        .btn-primary {
-            background-color: #0056b3;
-        }
-        .welcome-section {
-            text-align: center;
-            padding: 40px 0;
-        }
-        .action-buttons {
-            margin-top: 20px;
-        }
-        nav {
-            background: #333;
-            padding: 15px 0;
-        }
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-    </style>
+    <title><?= isset($title) ? $title : "RoadPic - Capturez l’Aventure, Partagez l’Instant" ?></title>
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-    <nav>
-        <div class="container">
-            <div>
-                <a href="<?php echo BASE_URL; ?>">Photo Management</a>
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-left">
+                <a href="/index.php" class="logo">
+                    <img src="/images/RoadPic.svg" alt="Logo" width="80">
+                </a>
             </div>
-            <div>
-                <?php if(isset($_SESSION['user_id'])) : ?>
-                    <a href="<?php echo BASE_URL; ?>/groups">Mes Groupes</a>
-                    <span style="color: white;">Bonjour, <?php echo htmlspecialchars($_SESSION['user_name'] ?? ''); ?></span>
-                    <a href="<?php echo BASE_URL; ?>/auth/logout">D�connexion</a>
-                <?php else : ?>
-                    <a href="<?php echo BASE_URL; ?>/auth/login">Connexion</a>
-                    <a href="<?php echo BASE_URL; ?>/auth/register">Inscription</a>
-                <?php endif; ?>
+            <ul class="navbar-center">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="#">À propos</a></li>
+                <li><a href="#">Contacts</a></li>
+            </ul>
+            <div class="navbar-right">
+                <a href="/login.php" class="btn login-btn">Connexion</a>
+                <a href="/register.php" class="btn register-btn">Inscription</a>
             </div>
-        </div>
-    </nav>
-    <?php if(isset($_SESSION['flash_message'])): ?>
-        <div class="container">
-            <div class="alert alert-<?php echo $_SESSION['flash_type'] ?? 'info'; ?>">
-                <?php 
-                echo $_SESSION['flash_message'];
-                unset($_SESSION['flash_message']);
-                unset($_SESSION['flash_type']);
-                ?>
-            </div>
-        </div>
-    <?php endif; ?>
+        </nav>
+    </header>
+</body>
+</html>
