@@ -1,79 +1,60 @@
-<div class="presentation container mt-5">
-    <div class="form-container">
-        <h2>Connexion</h2>
-        
-        <?php if(isset($_SESSION['success_msg'])) : ?>
-            <div class="alert alert-success">
-                <?php 
-                    echo $_SESSION['success_msg']; 
-                    unset($_SESSION['success_msg']);
-                ?>
-            </div>
-        <?php endif; ?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= isset($title) ? $title : "RoadPic - Capturez l’Aventure, Partagez l’Instant" ?></title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
 
-        <form action="<?php echo BASE_URL; ?>/auth/login" method="post">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" class="form-control"
-                       value="<?php echo isset($email) ? htmlspecialchars($email) : ''; ?>">
-                <span class="error"><?php echo isset($email_err) ? $email_err : ''; ?></span>
-            </div>
-
-            <div class="form-group">
-                <label for="password">Mot de passe</label>
-                <input type="password" name="password" id="password" class="form-control">
-                <span class="error"><?php echo isset($password_err) ? $password_err : ''; ?></span>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Se connecter</button>
-        </form>
-        <p class="mt-3">Pas encore de compte? <a href="<?php echo BASE_URL; ?>/auth/register">S'inscrire</a></p>
+<body class="">
+    <div class='banner-icon'>
+        <a href="/"><img src="/images/RoadPic.svg" alt="RoadPic" class="logo" width="80"></a>
     </div>
-</div>
+    <main class="presentation login-main-container">
+        <section class="login-section">
+            <div class="login-description-container">
 
-<style>
-.form-container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+                <article>
+                    <h1>Hello !</h1>
+                    <p>Reconnectez-vous et retrouvez instantanément tous vos souvenirs de roadtrip. </p>
+                </article>
+            </div>
+            <div class="login-form-container">
+                <?php if(isset($_SESSION['success_msg'])) : ?>
+                    <div class="alert alert-success">
+                        <?php 
+                            echo $_SESSION['success_msg']; 
+                            unset($_SESSION['success_msg']);
+                        ?>
+                    </div>
+                <?php endif; ?>
 
-.form-group {
-    margin-bottom: 15px;
-}
+                <form action="<?php echo BASE_URL; ?>/auth/login" method="post">
+                    <div class="login-form-group form-group">
+                        <input type="email" name="email" id="email" class="form-control" placeholder="jonsnow@gmail.com"
+                               value="<?php echo isset($email) ? htmlspecialchars($email) : ''; ?>">
+                        <span class="error"><?php echo isset($email_err) ? $email_err : ''; ?></span>
+                    </div>
+                    <div class="login-form-group form-group">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="*******"> 
+                        <span class="error"><?php echo isset($password_err) ? $password_err : ''; ?></span>
+                        <p><a>Mot de passe oublié ?</a></p>
+                    </div>
+                    <button type="submit" class="btn login-btn2">Se connecter</button>
+                </form>
 
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-}
+                <section class="or-register-section">
+                    <div class="line-container">
+                        <div class="line"></div>
+                            <span class="or-text">ou</span>
+                        <div class="line"></div>
+                    </div>
+                    <p class="create-account"><a href="/auth/register">Créer un compte</a></p>
+                </section>
+            </div>
+        </section>
 
-.form-control {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.error {
-    color: #dc3545;
-    font-size: 0.875em;
-    margin-top: 5px;
-    display: block;
-}
-
-.alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-}
-
-.alert-success {
-    color: #155724;
-    background-color: #d4edda;
-    border-color: #c3e6cb;
-}
-</style>
+        <section class="login-illustration">
+            <img src="/images/photo-managment-illu.png" alt="RoadPic" class="login-bg">
+        </section>
+    </main>
+</body>
