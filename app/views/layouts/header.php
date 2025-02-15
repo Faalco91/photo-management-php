@@ -20,8 +20,8 @@
                 <li><a href="#">Contacts</a></li>
             </ul>
             <div class="navbar-right">
-                <a href="/login.php" class="btn login-btn">Connexion</a>
-                <a href="/register.php" class="btn register-btn">Inscription</a>
+                <a href="/auth/login" class="btn login-btn">Connexion</a>
+                <a href="/auth/register" class="btn register-btn">Inscription</a>
             </div>
         </nav>
     </header>
