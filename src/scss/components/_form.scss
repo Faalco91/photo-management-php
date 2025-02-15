@@ -1,0 +1,134 @@
+@use '../partials/variables' as *;
+@use '../partials/functions' as *;  
+@use '../partials/globals' as *; 
+
+
+.banner-icon {
+    position: absolute;
+    padding-top: 1.25rem;
+    width: 90%;
+}
+
+.register-section {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+    .register-description-container {
+        color: #fff;
+        padding: rem(20) rem(30);
+        align-items: center;
+        margin-bottom: rem(0);
+        width: 45%;
+
+
+        article > h1 {
+            font-weight: 500;
+            letter-spacing: -.1rem;   
+            line-height: 1.1;
+            margin-bottom: 0;
+            padding-bottom: rem(27.2);
+        }   
+
+        article > p {
+            color: #f0f0f0c9;
+            font-weight: 200;
+            font-size: rem(18);
+        }
+    }
+
+    .register-form-container {
+        display: flex;
+        flex-direction: column;
+        padding: rem(0) rem(30);
+        margin-top: rem(160);
+        justify-content: space-between;
+
+        h2 {
+            color: $third-text-color;
+            font-size: rem(30);
+            padding-bottom: rem(25);
+        }
+
+        .login-link {
+            display: flex;
+            color: $secondary-text-color;
+            padding-bottom: rem(50);
+
+            a {
+                margin-left: rem(10);
+                color: $third-text-color;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+
+.form-group {
+    input {
+        margin-top: .8rem;
+
+        color: $third-text-color;
+        background-color: #171616c2;
+
+        width: 100%;
+        height: 3rem;
+        border-radius: .625rem;
+        border: 1px solid #1e1e1e;
+
+        padding-left: 1.25rem;
+        margin-bottom: 1.8rem;
+
+    }
+
+    label {
+        color: $third-text-color;
+    }
+}
+
+.form-password-container {
+    display: flex;
+
+    .password1 {
+        width: 50%;
+        padding-right: rem(10);
+    }
+
+    .password2 {
+        width: 50%;
+        padding-left: rem(10);
+    }
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.error {
+    color: #dc3545;
+    font-size: 0.875em;
+    margin-top: 5px;
+    display: block;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
