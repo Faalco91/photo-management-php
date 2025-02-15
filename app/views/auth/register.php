@@ -7,7 +7,7 @@
 
 <body class="custom-register-bg">
     <div class='banner-icon'>
-        <a href="/"><img src="/images/RoadPic2.svg" alt="RoadPic" class="logo" width="90"></a>
+        <a href="/"><img src="/images/RoadPic2.svg" alt="RoadPic" class="logo" width="80"></a>
     </div>
 
     <section class="presentation register-section"> 
