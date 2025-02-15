@@ -1,6 +1,6 @@
 :root {
 	--white: #fff;
-	--grey: #f0f0f0;
+	--grey: #f0f0f0c9;
 	--black: #000;
 	--bg-color: var(--black);
 	--text-color: var(--white);
@@ -51,6 +51,10 @@ svg {
 			fill: var(--main-color);
 		}
 	}
+}
+
+.custom-register-bg {
+    background-color: #000000; /* Remplacez cette couleur par celle que vous souhaitez */
 }
 
 .presentation {
