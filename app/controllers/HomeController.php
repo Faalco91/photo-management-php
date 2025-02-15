@@ -2,7 +2,7 @@
 class HomeController extends Controller {
     public function index() {
         $data = [
-            'title' => 'Accueil',
+            'title' => 'RoadPic',
             'username' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : ''
         ];
         
