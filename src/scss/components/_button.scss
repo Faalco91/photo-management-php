@@ -9,6 +9,7 @@
     margin-left: rem(10);
     border-radius: rem(10);
     transition: background-color 0.3s;
+    cursor: pointer;
 
     &:hover {
         background-color: transparentize-color($primary-color, 0.5); // Utilisation de la fonction pour ajouter de la transparence
@@ -18,6 +19,19 @@
 .register-btn {
     background-color: black;
     color: white;
+}
+
+.register-btn2 {
+    background-color: white;
+    color: black;
+    font-size: rem(16);
+    width: 100%;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.894);
+    }
+
+    border: none;
 }
 
 .login-btn {
