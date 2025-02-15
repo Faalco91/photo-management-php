@@ -148,6 +148,8 @@ svg:hover path {
   color: black;
   font-size: 1rem;
   width: 100%;
+  padding-top: 0.9375rem;
+  padding-bottom: 0.9375rem;
   border: none;
 }
 .register-btn2:hover {
@@ -157,6 +159,19 @@ svg:hover path {
 .login-btn {
   background-color: white;
   color: black;
+}
+
+.login-btn2 {
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  width: 100%;
+  padding-top: 0.9375rem;
+  padding-bottom: 0.9375rem;
+  border: none;
+}
+.login-btn2:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .cta-btn {
@@ -171,7 +186,7 @@ svg:hover path {
   width: 90%;
 }
 
-.register-section {
+.auth-section {
   width: 80%;
   display: flex;
   flex-direction: row;
@@ -181,61 +196,129 @@ svg:hover path {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.register-section .register-description-container {
+.auth-section .register-description-container {
   color: #fff;
   padding: 1.25rem 1.875rem;
   align-items: center;
   margin-bottom: 0rem;
   width: 45%;
 }
-.register-section .register-description-container article > h1 {
+.auth-section .register-description-container article > h1 {
   font-weight: 500;
   letter-spacing: -0.1rem;
   line-height: 1.1;
   margin-bottom: 0;
   padding-bottom: 1.7rem;
 }
-.register-section .register-description-container article > p {
+.auth-section .register-description-container article > p {
   color: rgba(240, 240, 240, 0.7882352941);
   font-weight: 200;
   font-size: 1.125rem;
 }
-.register-section .register-form-container {
+.auth-section .register-form-container {
   display: flex;
   flex-direction: column;
   padding: 0rem 1.875rem;
   margin-top: 10rem;
   justify-content: space-between;
 }
-.register-section .register-form-container h2 {
+.auth-section .register-form-container h2 {
   color: #fff;
   font-size: 1.875rem;
   padding-bottom: 1.5625rem;
 }
-.register-section .register-form-container .login-link {
+.auth-section .register-form-container .login-link {
   display: flex;
   color: rgb(89, 89, 89);
   padding-bottom: 3.125rem;
 }
-.register-section .register-form-container .login-link a {
+.auth-section .register-form-container .login-link a {
   margin-left: 0.625rem;
   color: #fff;
   text-decoration: underline;
 }
 
+.login-main-container {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.login-section {
+  width: 60%;
+  padding: 0rem 5rem;
+}
+
+.login-illustration {
+  height: 90%;
+  display: flex;
+  align-items: center;
+  background-color: rgba(153, 217, 140, 0.2235294118);
+  object-fit: cover;
+  border-radius: 30px;
+  padding: 0rem 1.25rem;
+}
+
+.login-description-container article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login-description-container article > p {
+  color: black;
+  font-weight: 200;
+  font-size: 1.125rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.login-description-container .login-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form-container form button {
+  margin-left: 0;
+}
+.login-form-container p {
+  text-align: center;
+}
+
 .form-group input {
   margin-top: 0.8rem;
-  color: #fff;
-  background-color: rgba(23, 22, 22, 0.7607843137);
   width: 100%;
   height: 3rem;
   border-radius: 0.625rem;
-  border: 1px solid #1e1e1e;
   padding-left: 1.25rem;
   margin-bottom: 1.8rem;
 }
-.form-group label {
+
+.login-form-group input {
+  margin-bottom: 0;
+  margin-top: 0.8rem;
+}
+.login-form-group p {
+  text-align: right;
+  text-decoration: underline;
+  margin: 0.9375rem 0rem 2.1875rem 0rem;
+}
+
+.register-form-group label {
   color: #fff;
+}
+.register-form-group input {
+  border: 1px solid #1e1e1e;
+  background-color: rgba(23, 22, 22, 0.7607843137);
+}
+
+.login-form-group label {
+  color: #000;
+}
+.login-form-group input {
+  border: 1px solid rgba(214, 211, 211, 0.8156862745);
+  background-color: #ffffff;
 }
 
 .form-password-container {
@@ -257,6 +340,52 @@ svg:hover path {
   border-radius: 4px;
 }
 
+.or-register-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.or-register-section .create-account {
+  background-color: transparent;
+  width: 100%;
+  padding: 0.9375rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.0625rem solid black;
+  border-radius: 1.875rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+.or-register-section .create-account a {
+  text-decoration: none;
+  color: #000;
+}
+
+.line-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 90%;
+  margin: 2.5rem 0rem;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.or-text {
+  margin: 0rem 0.5rem;
+  font-size: 0.875rem;
+  color: #666;
+  text-align: center;
+  font-weight: bold;
+}
+
 .error {
   color: #dc3545;
   font-size: 0.875em;
@@ -275,6 +404,12 @@ svg:hover path {
   color: #721c24;
   background-color: #f8d7da;
   border-color: #f5c6cb;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
 }
 
 .benefits_container {
