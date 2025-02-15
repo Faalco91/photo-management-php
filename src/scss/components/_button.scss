@@ -26,6 +26,8 @@
     color: black;
     font-size: rem(16);
     width: 100%;
+    padding-top: rem(15);
+    padding-bottom: rem(15);
 
     &:hover {
         background-color: rgba(255, 255, 255, 0.894);
@@ -37,6 +39,21 @@
 .login-btn {
     background-color: white;
     color: black;
+}
+
+.login-btn2 {
+    background-color: black;
+    color: white;
+    font-size: rem(16);
+    width: 100%;
+    padding-top: rem(15);
+    padding-bottom: rem(15);
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    border: none;
 }
 
 .cta-btn {
