@@ -1,0 +1,25 @@
+@use '../partials/variables' as *;
+@use '../partials/functions' as *;  
+@use '../partials/globals' as *;    
+
+.benefits_container {
+    margin-top: rem(40);
+
+    .benefits_item {
+        display: inline-flex;
+        align-items: center;
+        color: $third-text-color;
+        text-decoration: none;
+        padding: rem(12) rem(20);
+        margin: rem(10);
+        border-radius: rem(30);
+        border: rem(1) solid rgba(240, 240, 240, 0.7882352941);
+    
+        .benefits_icon {
+            margin-right: rem(10);
+            font-size: rem(20);
+        }
+    }
+}
+
+  
