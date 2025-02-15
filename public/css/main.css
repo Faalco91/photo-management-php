@@ -1,6 +1,6 @@
 :root {
   --white: #fff;
-  --grey: #f0f0f0;
+  --grey: #f0f0f0c9;
   --black: #000;
   --bg-color: var(--black);
   --text-color: var(--white);
@@ -47,6 +47,10 @@ svg path {
 }
 svg:hover path {
   fill: var(--main-color);
+}
+
+.custom-register-bg {
+  background-color: #000000; /* Remplacez cette couleur par celle que vous souhaitez */
 }
 
 .presentation {
@@ -128,6 +132,7 @@ svg:hover path {
   margin-left: 0.625rem;
   border-radius: 0.625rem;
   transition: background-color 0.3s;
+  cursor: pointer;
 }
 .btn:hover {
   background-color: transparentize-color(--background-color, 0.5);
@@ -136,6 +141,17 @@ svg:hover path {
 .register-btn {
   background-color: black;
   color: white;
+}
+
+.register-btn2 {
+  background-color: white;
+  color: black;
+  font-size: 1rem;
+  width: 100%;
+  border: none;
+}
+.register-btn2:hover {
+  background-color: rgba(255, 255, 255, 0.894);
 }
 
 .login-btn {
@@ -147,6 +163,136 @@ svg:hover path {
   font-size: 1.125rem;
   background-color: black;
   color: white;
+}
+
+.banner-icon {
+  position: absolute;
+  padding-top: 1.25rem;
+  width: 90%;
+}
+
+.register-section {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.register-section .register-description-container {
+  color: #fff;
+  padding: 1.25rem 1.875rem;
+  align-items: center;
+  margin-bottom: 0rem;
+  width: 45%;
+}
+.register-section .register-description-container article > h1 {
+  font-weight: 500;
+  letter-spacing: -0.1rem;
+  line-height: 1.1;
+  margin-bottom: 0;
+  padding-bottom: 1.7rem;
+}
+.register-section .register-description-container article > p {
+  color: rgba(240, 240, 240, 0.7882352941);
+  font-weight: 200;
+  font-size: 1.125rem;
+}
+.register-section .register-form-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0rem 1.875rem;
+  margin-top: 10rem;
+  justify-content: space-between;
+}
+.register-section .register-form-container h2 {
+  color: #fff;
+  font-size: 1.875rem;
+  padding-bottom: 1.5625rem;
+}
+.register-section .register-form-container .login-link {
+  display: flex;
+  color: rgb(89, 89, 89);
+  padding-bottom: 3.125rem;
+}
+.register-section .register-form-container .login-link a {
+  margin-left: 0.625rem;
+  color: #fff;
+  text-decoration: underline;
+}
+
+.form-group input {
+  margin-top: 0.8rem;
+  color: #fff;
+  background-color: rgba(23, 22, 22, 0.7607843137);
+  width: 100%;
+  height: 3rem;
+  border-radius: 0.625rem;
+  border: 1px solid #1e1e1e;
+  padding-left: 1.25rem;
+  margin-bottom: 1.8rem;
+}
+.form-group label {
+  color: #fff;
+}
+
+.form-password-container {
+  display: flex;
+}
+.form-password-container .password1 {
+  width: 50%;
+  padding-right: 0.625rem;
+}
+.form-password-container .password2 {
+  width: 50%;
+  padding-left: 0.625rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.error {
+  color: #dc3545;
+  font-size: 0.875em;
+  margin-top: 5px;
+  display: block;
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.benefits_container {
+  margin-top: 2.5rem;
+}
+.benefits_container .benefits_item {
+  display: inline-flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  margin: 0.625rem;
+  border-radius: 1.875rem;
+  border: 0.0625rem solid rgba(240, 240, 240, 0.7882352941);
+}
+.benefits_container .benefits_item .benefits_icon {
+  margin-right: 0.625rem;
+  font-size: 1.25rem;
 }
 
 /*# sourceMappingURL=main.css.map */
