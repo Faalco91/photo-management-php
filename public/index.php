@@ -21,3 +21,4 @@ require_once ROOT . '/core/Router.php';
 // G�rer la requ�te
 $router = new Router();
 $router->handleRequest();
+

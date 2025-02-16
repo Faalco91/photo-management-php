@@ -6,7 +6,7 @@ class User {
         $this->db = new Database;
     }
 
-    // Méthode de login
+    // Mï¿½thode de login
     public function login($email, $password) {
         try {
             $this->db->query('SELECT * FROM users WHERE email = :email');
@@ -25,18 +25,18 @@ class User {
         }
     }
 
-    // Vérifier si un email existe
+    // Vï¿½rifier si un email existe
     public function findUserByEmail($email) {
         try {
             $this->db->query('SELECT * FROM users WHERE email = :email');
             $this->db->bind(':email', $email);
             $row = $this->db->single();
             
-            error_log('Recherche email ' . $email . ' : ' . ($row ? 'trouvé' : 'non trouvé'));
+            error_log('Recherche email ' . $email . ' : ' . ($row ? 'trouvï¿½' : 'non trouvï¿½'));
             
             return ($row) ? true : false;
         } catch (PDOException $e) {
-            error_log('Erreur SQL lors de la vérification email: ' . $e->getMessage());
+            error_log('Erreur SQL lors de la vï¿½rification email: ' . $e->getMessage());
             return false;
         }
     }
@@ -44,7 +44,7 @@ class User {
     // Inscription d'un nouvel utilisateur
     public function register($data) {
         try {
-            error_log('Tentative d\'inscription avec les données : ' . print_r($data, true));
+            error_log('Tentative d\'inscription avec les donnï¿½es : ' . print_r($data, true));
             $this->db->query('INSERT INTO users (username, email, password) VALUES (:username, :email, :password)');
             
             // Bind des valeurs
@@ -52,19 +52,51 @@ class User {
             $this->db->bind(':email', $data['email']);
             $this->db->bind(':password', password_hash($data['password'], PASSWORD_DEFAULT));
 
-            // Exécuter
+            // Exï¿½cuter
             $result = $this->db->execute();
             
             if (!$result) {
-                error_log('Échec de l\'insertion : ' . print_r($this->db->error(), true));
+                error_log('ï¿½chec de l\'insertion : ' . print_r($this->db->error(), true));
                 return false;
             }
 
-            error_log('Inscription réussie');
+            error_log('Inscription rï¿½ussie');
             return true;
         } catch (PDOException $e) {
             error_log('Erreur SQL lors de l\'inscription: ' . $e->getMessage());
             return false;
         }
+    }
+
+    // Rï¿½initialiser le mot de passe
+    public function resetPassword($token, $password) {
+        // Rechercher l'utilisateur par token
+        $this->db->query('SELECT * FROM users WHERE reset_token = :token AND reset_token_expires > NOW()');
+        $this->db->bind(':token', $token);
+        $row = $this->db->single();
+
+        if ($row) {
+            // Mettre Ã  jour le mot de passe
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $this->db->query('UPDATE users SET password = :password, reset_token = NULL, reset_token_expires = NULL WHERE id = :id');
+            $this->db->bind(':password', $hashedPassword);
+            $this->db->bind(':id', $row->id);
+            return $this->db->execute();
+        } else {
+            return false;
+        }
+    }
+
+    public function storeResetToken($email, $token, $expires) {
+        error_log("Storing reset token for $email: token=$token, expires=$expires");
+        $this->db->query('UPDATE users SET reset_token = :token, reset_token_expires = :expires WHERE email = :email');
+        $this->db->bind(':token', $token);
+        $this->db->bind(':expires', $expires);
+        $this->db->bind(':email', $email);
+        $result = $this->db->execute();
+        if (!$result) {
+            error_log('Failed to store reset token: ' . print_r($this->db->error(), true));
+        }
+        return $result;    
     }
 }

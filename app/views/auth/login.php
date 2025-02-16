@@ -37,7 +37,7 @@
                     <div class="login-form-group form-group">
                         <input type="password" name="password" id="password" class="form-control" placeholder="*******"> 
                         <span class="error"><?php echo isset($password_err) ? $password_err : ''; ?></span>
-                        <p><a>Mot de passe oublié ?</a></p>
+                        <p><a href="/auth/forgetpassword">Mot de passe oublié ?</a></p>
                     </div>
                     <button type="submit" class="btn login-btn2">Se connecter</button>
                 </form>

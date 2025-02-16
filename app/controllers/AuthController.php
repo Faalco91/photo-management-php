@@ -1,4 +1,6 @@
 <?php
+require_once dirname(__DIR__) . '/services/MailService.php';
+
 class AuthController extends Controller {
     private $userModel;
 
@@ -10,9 +12,9 @@ class AuthController extends Controller {
         // Si c'est une soumission de formulaire
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Activer le debug
-            error_log('Données POST reçues : ' . print_r($_POST, true));
+            error_log('Donnï¿½es POST reï¿½ues : ' . print_r($_POST, true));
 
-            // Récupérer les données du formulaire
+            // Rï¿½cupï¿½rer les donnï¿½es du formulaire
             $data = [
                 'username' => trim($_POST['username']),
                 'email' => trim($_POST['email']),
@@ -32,13 +34,13 @@ class AuthController extends Controller {
             if(empty($data['email'])) {
                 $data['email_err'] = 'Veuillez entrer un email';
             } elseif($this->userModel->findUserByEmail($data['email'])) {
-                $data['email_err'] = 'Email déjà utilisé';
+                $data['email_err'] = 'Email dï¿½jï¿½ utilisï¿½';
             }
 
             if(empty($data['password'])) {
                 $data['password_err'] = 'Veuillez entrer un mot de passe';
             } elseif(strlen($data['password']) < 6) {
-                $data['password_err'] = 'Le mot de passe doit faire au moins 6 caractères';
+                $data['password_err'] = 'Le mot de passe doit faire au moins 6 caractï¿½res';
             }
 
             if(empty($data['confirm_password'])) {
@@ -57,17 +59,17 @@ class AuthController extends Controller {
                empty($data['password_err']) && empty($data['confirm_password_err'])) {
                 
                 try {
-                    // Inscription réussie
+                    // Inscription rï¿½ussie
                     if($this->userModel->register($data)) {
-                        // Message de succès
-                        $_SESSION['success_msg'] = 'Vous êtes inscrit, vous pouvez maintenant vous connecter';
+                        // Message de succï¿½s
+                        $_SESSION['success_msg'] = 'Vous ï¿½tes inscrit, vous pouvez maintenant vous connecter';
                         
                         // Redirection
                         header('Location: ' . BASE_URL . '/auth/login');
                         exit();
                     } else {
-                        error_log('Échec de l\'inscription dans la base de données');
-                        throw new Exception('Échec de l\'inscription');
+                        error_log('ï¿½chec de l\'inscription dans la base de donnï¿½es');
+                        throw new Exception('ï¿½chec de l\'inscription');
                     }
                 } catch (Exception $e) {
                     error_log('Erreur lors de l\'inscription : ' . $e->getMessage());
@@ -79,7 +81,7 @@ class AuthController extends Controller {
                 $this->view('auth/register', $data);
             }
         } else {
-            // Initialiser les données
+            // Initialiser les donnï¿½es
             $data = [
                 'username' => '',
                 'email' => '',
@@ -116,12 +118,12 @@ class AuthController extends Controller {
                 $data['password_err'] = 'Veuillez entrer votre mot de passe';
             }
 
-            // Vérifier si l'utilisateur existe
+            // Vï¿½rifier si l'utilisateur existe
             if ($this->userModel->findUserByEmail($data['email'])) {
-                // Vérifier le mot de passe
+                // Vï¿½rifier le mot de passe
                 $loggedInUser = $this->userModel->login($data['email'], $data['password']);
                 if ($loggedInUser) {
-                    // Créer la session
+                    // Crï¿½er la session
                     $this->createUserSession($loggedInUser);
                     header('Location: ' . BASE_URL);
                     exit();
@@ -129,7 +131,7 @@ class AuthController extends Controller {
                     $data['password_err'] = 'Mot de passe incorrect';
                 }
             } else {
-                $data['email_err'] = 'Aucun utilisateur trouvé avec cet email';
+                $data['email_err'] = 'Aucun utilisateur trouvï¿½ avec cet email';
             }
 
             // S'il y a des erreurs, recharger la vue
@@ -146,6 +148,71 @@ class AuthController extends Controller {
             ];
 
             $this->view('auth/login', $data);
+        }
+    }
+
+    public function forgetpassword() {
+        // Si le formulaire est soumis (mÃ©thode POST)
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // RÃ©cupÃ©rer l'email de l'utilisateur
+            $userEmail = $_POST['email'];
+        
+            // GÃ©nÃ©rer un token de rÃ©initialisation
+            $token = bin2hex(random_bytes(32));
+            $expires = date('Y-m-d H:i:s', strtotime('+1 hour'));
+
+            // Stocker le token et sa date d'expiration
+            if ($this->userModel->storeResetToken($userEmail, $token, $expires)) {
+                // Envoyer l'email
+                try {
+                    \App\Services\MailService::sendResetPasswordEmail($userEmail, $token);
+                    $message = "Un email de rÃ©initialisation a Ã©tÃ© envoyÃ© Ã  $userEmail.";
+                } catch (\Exception $e) {
+                    $message = "Erreur : " . $e->getMessage();
+                    $error = true;
+                }
+            } else {
+                $message = "Erreur lors du stockage du token de rÃ©initialisation.";
+                $error = true;
+            }
+        }
+
+        // Afficher la vue avec ou sans message
+        require __DIR__ . '/../../app/views/auth/forgetpassword.php';
+
+    }
+
+    public function resetpassword() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $token = $_POST['token'];
+            $password = $_POST['password'];
+            $confirm_password = $_POST['confirm_password'];
+
+            // Valider le mot de passe
+            if (empty($password) || strlen($password) < 6) {
+                $data['error'] = 'Le mot de passe doit faire au moins 6 caractÃ¨res';
+                $this->view('auth/resetpassword', $data);
+                return;
+            }
+
+            if ($password !== $confirm_password) {
+                $data['error'] = 'Les mots de passe ne correspondent pas';
+                $this->view('auth/resetpassword', $data);
+                return;
+            }
+
+            // VÃ©rifier le token et rÃ©initialiser le mot de passe
+            if ($this->userModel->resetPassword($token, $password)) {
+                $_SESSION['success_msg'] = 'Votre mot de passe a Ã©tÃ© rÃ©initialisÃ© avec succÃ¨s';
+                header('Location: ' . BASE_URL . '/auth/login');
+                exit();
+            } else {
+                $data['error'] = 'Token invalide ou expirÃ©';
+                $this->view('auth/resetpassword', $data);
+            }
+        } else {
+            $data = [];
+            $this->view('auth/resetpassword', $data);
         }
     }
 
