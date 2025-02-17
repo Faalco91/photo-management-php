@@ -15,6 +15,10 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+# Installer Node.js et npm
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
+    && apt-get install -y nodejs
+
 # Configuration PHP
 COPY docker/php.ini /usr/local/etc/php/php.ini
 
@@ -42,5 +46,12 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
     && php -r "unlink('composer-setup.php');"
 
-# Commande par d�faut
+# Copier le fichier package.json et installer les dépendances npm
+COPY package.json package-lock.json ./
+RUN npm install
+
+# Exécuter le script npm pour compiler les fichiers SCSS en CSS
+RUN npm run sass
+
+# Commande par d�faut
 CMD ["php-fpm"]
