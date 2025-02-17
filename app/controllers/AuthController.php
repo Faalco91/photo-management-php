@@ -99,57 +99,57 @@ class AuthController extends Controller {
     }
 
     public function login() {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Traitement de la connexion
-            $data = [
-                'email' => trim($_POST['email']),
-                'password' => trim($_POST['password']),
-                'email_err' => '',
-                'password_err' => ''
-            ];
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // Traitement de la connexion
+        $data = [
+            'email' => trim($_POST['email']),
+            'password' => trim($_POST['password']),
+            'email_err' => '',
+            'password_err' => ''
+        ];
 
-            // Valider l'email
-            if (empty($data['email'])) {
-                $data['email_err'] = 'Veuillez entrer votre email';
-            }
+        // Valider l'email
+        if (empty($data['email'])) {
+            $data['email_err'] = 'Veuillez entrer votre email';
+        }
 
-            // Valider le mot de passe
-            if (empty($data['password'])) {
-                $data['password_err'] = 'Veuillez entrer votre mot de passe';
-            }
+        // Valider le mot de passe
+        if (empty($data['password'])) {
+            $data['password_err'] = 'Veuillez entrer votre mot de passe';
+        }
 
-            // V�rifier si l'utilisateur existe
-            if ($this->userModel->findUserByEmail($data['email'])) {
-                // V�rifier le mot de passe
-                $loggedInUser = $this->userModel->login($data['email'], $data['password']);
-                if ($loggedInUser) {
-                    // Cr�er la session
-                    $this->createUserSession($loggedInUser);
-                    header('Location: ' . BASE_URL);
-                    exit();
-                } else {
-                    $data['password_err'] = 'Mot de passe incorrect';
-                }
+        // Vérifier si l'utilisateur existe
+        if ($this->userModel->findUserByEmail($data['email'])) {
+            $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+            if ($loggedInUser) {
+                // Créer la session
+                $this->createUserSession($loggedInUser);
+                // Rediriger vers le tableau de bord au lieu de la page d'accueil
+                header('Location: ' . BASE_URL . '/dashboard');
+                exit();
             } else {
-                $data['email_err'] = 'Aucun utilisateur trouv� avec cet email';
-            }
-
-            // S'il y a des erreurs, recharger la vue
-            if (!empty($data['email_err']) || !empty($data['password_err'])) {
-                $this->view('auth/login', $data);
+                $data['password_err'] = 'Mot de passe incorrect';
             }
         } else {
-            // Initialiser le formulaire
-            $data = [
-                'email' => '',
-                'password' => '',
-                'email_err' => '',
-                'password_err' => ''
-            ];
+            $data['email_err'] = 'Aucun utilisateur trouvé avec cet email';
+        }
 
+        // S'il y a des erreurs, recharger la vue
+        if (!empty($data['email_err']) || !empty($data['password_err'])) {
             $this->view('auth/login', $data);
         }
+    } else {
+        // Initialiser le formulaire
+        $data = [
+            'email' => '',
+            'password' => '',
+            'email_err' => '',
+            'password_err' => ''
+        ];
+
+        $this->view('auth/login', $data);
     }
+}
 
     public function forgetpassword() {
         // Si le formulaire est soumis (méthode POST)

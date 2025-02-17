@@ -74,4 +74,49 @@ class Group {
 
         return ($this->db->single()) ? true : false;
     }
+
+    public function deleteGroup($id) {
+        $this->db->beginTransaction();
+        try {
+            // Supprimer d'abord les membres du groupe
+            $this->db->query('DELETE FROM user_groups WHERE group_id = :id');
+            $this->db->bind(':id', $id);
+            $this->db->execute();
+
+            // Supprimer le groupe
+            $this->db->query('DELETE FROM `groups` WHERE id = :id');
+            $this->db->bind(':id', $id);
+            $this->db->execute();
+
+            $this->db->commit();
+            return true;
+        } catch(Exception $e) {
+            $this->db->rollBack();
+            error_log('Erreur lors de la suppression du groupe: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function addMember($groupId, $userId, $role = 'member') {
+        $this->db->query('INSERT INTO user_groups (user_id, group_id, role) VALUES (:user_id, :group_id, :role)');
+        $this->db->bind(':user_id', $userId);
+        $this->db->bind(':group_id', $groupId);
+        $this->db->bind(':role', $role);
+        return $this->db->execute();
+    }
+
+    public function removeMember($groupId, $userId) {
+        // Ne pas permettre la suppression du propriétaire
+        $this->db->query('DELETE FROM user_groups WHERE group_id = :group_id AND user_id = :user_id AND role != "owner"');
+        $this->db->bind(':group_id', $groupId);
+        $this->db->bind(':user_id', $userId);
+        return $this->db->execute();
+    }
+
+    public function isOwner($groupId, $userId) {
+        $this->db->query('SELECT * FROM user_groups WHERE group_id = :group_id AND user_id = :user_id AND role = "owner"');
+        $this->db->bind(':group_id', $groupId);
+        $this->db->bind(':user_id', $userId);
+        return $this->db->single() ? true : false;
+    }
 }

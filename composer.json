@@ -1,14 +1,16 @@
 {
-    "require": {
-        "vlucas/phpdotenv": "^5.6",
-        "phpmailer/phpmailer": "^6.9",
-        "mailgun/mailgun-php": "^4.3",
-        "kriswallsmith/buzz": "^1.3",
-        "nyholm/psr7": "^1.8"
-    },
-    "config": {
-        "allow-plugins": {
-            "php-http/discovery": true
+    "name": "yanis/photo-management-php",
+    "description": "Un système de gestion de photos (ou votre description)",
+    "type": "project",
+    "license": "mit",
+    "autoload": {
+        "psr-4": {
+            "Yanis\\PhotoManagementPhp\\": "src/"
         }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "filp/whoops": "^2.17",
+        "vlucas/phpdotenv": "^5.6"
     }
 }
