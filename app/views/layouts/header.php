@@ -10,7 +10,7 @@
     <header class="header">
         <nav class="navbar">
             <div class="navbar-left">
-                <a href="/index.php" class="logo">
+                <a href="/" class="logo">
                     <img src="/images/RoadPic.svg" alt="Logo" width="80">
                 </a>
             </div>
