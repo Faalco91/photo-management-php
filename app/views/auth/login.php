@@ -53,7 +53,7 @@
             </div>
         </section>
 
-        <section class="login-illustration">
+        <section class="login-illustration illu1">
             <img src="/images/photo-managment-illu.png" alt="RoadPic" class="login-bg">
         </section>
     </main>
