@@ -174,6 +174,10 @@ svg:hover path {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
+.forget-submit {
+  margin-top: 0.8rem;
+}
+
 .cta-btn {
   font-size: 1.125rem;
   background-color: black;
@@ -247,17 +251,28 @@ svg:hover path {
 
 .login-section {
   width: 60%;
-  padding: 0rem 5rem;
+  padding: 0rem 3.125rem;
 }
 
 .login-illustration {
   height: 90%;
   display: flex;
   align-items: center;
-  background-color: rgba(153, 217, 140, 0.2235294118);
   object-fit: cover;
   border-radius: 30px;
-  padding: 0rem 1.25rem;
+  padding: 0rem 3.125rem;
+}
+
+.illu1 {
+  background-color: rgba(59, 54, 197, 0.2235294118);
+}
+
+.illu2 {
+  background-color: rgba(153, 217, 140, 0.2235294118);
+}
+
+.illu3 {
+  background-color: rgba(140, 182, 217, 0.2235294118);
 }
 
 .login-description-container article {
@@ -294,15 +309,24 @@ svg:hover path {
   padding-left: 1.25rem;
   margin-bottom: 1.8rem;
 }
-
-.login-form-group input {
-  margin-bottom: 0;
-  margin-top: 0.8rem;
-}
-.login-form-group p {
+.form-group p {
   text-align: right;
   text-decoration: underline;
   margin: 0.9375rem 0rem 2.1875rem 0rem;
+}
+.form-group p a {
+  text-decoration: none;
+  color: #000;
+}
+
+.login-form-group label {
+  color: #000;
+}
+.login-form-group input {
+  border: 1px solid rgba(214, 211, 211, 0.8156862745);
+  background-color: #ffffff;
+  margin-bottom: 0;
+  margin-top: 0.8rem;
 }
 
 .register-form-group label {
@@ -313,10 +337,9 @@ svg:hover path {
   background-color: rgba(23, 22, 22, 0.7607843137);
 }
 
-.login-form-group label {
-  color: #000;
-}
-.login-form-group input {
+.reset-form-group input {
+  margin-top: 0.8rem;
+  margin-bottom: 1.8rem;
   border: 1px solid rgba(214, 211, 211, 0.8156862745);
   background-color: #ffffff;
 }

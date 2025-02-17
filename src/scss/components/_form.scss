@@ -76,18 +76,28 @@
 }
 .login-section {
     width: 60%;
-    padding: rem(0) rem(80);
+    padding: rem(0) rem(50);
 
 }
+
 .login-illustration {
     height: 90%;
     display: flex;
     align-items: center;
-	background-color: #99d98c39;
 	object-fit: cover;
 	border-radius: 30px;
-    padding: rem(0) rem(20);
+    padding: rem(0) rem(50);
 }
+.illu1 {
+    background-color: #3b36c539;
+}
+.illu2 {
+    background-color: #99d98c39;
+}
+.illu3 {
+    background-color: #8cb6d939;
+}
+
 .login-description-container {
     article {
         display: flex;
@@ -130,19 +140,30 @@
         padding-left: 1.25rem;
         margin-bottom: 1.8rem;
     }
-}
-.login-form-group {
-    input {
-        margin-bottom: 0;
-        margin-top: 0.8rem;
-    }
     p {
         text-align: right;
         text-decoration: underline;
         margin: rem(15) rem(0) rem(35) rem(0);
+
+        a {
+            text-decoration: none;
+            color: $text-color;
+        }
     }
 }
 
+
+.login-form-group {
+    label {
+        color: $text-color;
+    }
+    input {
+        border: 1px solid #d6d3d3d0;
+        background-color: #ffffff;
+        margin-bottom: 0;
+        margin-top: 0.8rem;
+    }
+}
 .register-form-group {
     label {
         color: $third-text-color;
@@ -152,11 +173,10 @@
         background-color: #171616c2;
     }
 }
-.login-form-group {
-    label {
-        color: $text-color;
-    }
+.reset-form-group {
     input {
+        margin-top: 0.8rem;
+        margin-bottom: 1.8rem;
         border: 1px solid #d6d3d3d0;
         background-color: #ffffff;
     }
