@@ -46,7 +46,7 @@
                 <p>Vous avez déjà un compte ?</p>
                 <a href="/auth/login">Se connecter</a>
             </div>
-            <form action="auth/register" method="post">
+            <form action="/auth/register" method="post">
                 <div class="register-form-group form-group">
                     <label for="username">Nom d'utilisateur</label>
                     <input type="text" name="username" id="username" placeholder="JonSnow" class="form-control" 

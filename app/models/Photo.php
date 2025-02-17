@@ -27,13 +27,13 @@ class Photo {
      * Récupère toutes les photos d'un groupe
      */
     public function getPhotosByGroup($groupId) {
-        $this->db->query('SELECT p.*, u.username FROM photos p 
+        $this->db->query('SELECT p.*, u.username 
+                         FROM photos p 
                          JOIN users u ON p.user_id = u.id 
                          WHERE p.group_id = :group_id 
                          ORDER BY p.created_at DESC');
         
         $this->db->bind(':group_id', $groupId);
-
         return $this->db->resultSet();
     }
 
