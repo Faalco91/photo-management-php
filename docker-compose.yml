@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: docker/Dockerfile
     volumes:
-      - /home/photo-management-php:/var/www/html
+      - .:/var/www/html
     depends_on:
       db:
         condition: service_healthy
