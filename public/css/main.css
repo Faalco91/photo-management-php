@@ -333,6 +333,7 @@ svg:hover path {
   color: #fff;
 }
 .register-form-group input {
+  color: white;
   border: 1px solid #1e1e1e;
   background-color: rgba(23, 22, 22, 0.7607843137);
 }
